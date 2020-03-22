@@ -1,16 +1,22 @@
 package main
 
 import (
-	"fmt"
+	"github.com/ValeryBMSTU/Diplom/Prog/Back/api"
 	"github.com/ValeryBMSTU/Diplom/Prog/Back/consts"
 	"github.com/labstack/echo"
+	"log"
 )
 
 func main() {
-	fmt.Println("I love you...")
-
 	e := echo.New()
+	h := &api.Handler{}
 
-	e.Logger.Warnf("shutdown " + consts.Addr)
+	if err := api.SetApi(e, h); err != nil {
+		log.Fatal(err)
+	}
+	if err := e.Start(consts.Address); err != nil {
+		log.Fatal(err)
+	}
+
+	e.Logger.Warnf("shutdown " + consts.Address)
 }
-
