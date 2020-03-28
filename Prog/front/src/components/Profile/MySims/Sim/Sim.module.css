@@ -1,0 +1,10 @@
+.item {
+    font-family: Arial, sans-serif;
+    font-size: 40px;
+}
+
+.item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+}
