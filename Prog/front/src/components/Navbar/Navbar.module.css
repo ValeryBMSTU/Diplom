@@ -18,3 +18,21 @@
 .item a.active {
     color: black;
 }
+
+.topUsers {
+    padding-left: 15px;
+    padding-top: 150px;
+    font-size: 35px;
+}
+
+.topLine {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.user img {
+    margin-top: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 40px;
+}

@@ -1,5 +1,4 @@
 import React from "react";
-import s from "./SimsList.module.css";
 
 const SimsList = () => {
   return (
