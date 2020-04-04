@@ -1,4 +1,6 @@
-import {renderAll} from './../render'
+let renderAll = () => {
+  console.log("state was changed")
+};
 
 let data = {
   dialogsData: [
@@ -22,16 +24,33 @@ let data = {
     {id: 2, title: "Already", text: "love science"},
     {id: 3, title: "GoTo", text: "My name is bob"}
   ],
+  newSimTitle: 'it-fignya'
 };
 
-export let addSim = (simTite) => {
+window.state = data;
+
+const addSim = () => {
   let newSim = {
     id: 4,
-    title: simTite,
+    title: data.newSimTitle,
     text: "i am a new sim",
   };
   data.simsData.push(newSim);
-  renderAll(data, addSim);
+  renderAll(data, bll);
+};
+
+const setNewSimTitle = (simTitle) => {
+  data.newSimTitle = simTitle
+  renderAll(data, bll);
+};
+
+export const bll = {
+  AddSim: addSim,
+  SetNewSimTitle: setNewSimTitle
+};
+
+export const subscribe = (observer) => {
+  renderAll = observer;
 };
 
 export default data;

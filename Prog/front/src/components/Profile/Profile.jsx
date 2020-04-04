@@ -6,15 +6,21 @@ const Profile = (props) => {
   let newSimElement = React.createRef();
 
   let AddSim = () => {
+    props.bll.AddSim();
+    props.bll.SetNewSimTitle('')
+  };
+
+  let onSimChange = () => {
     let text = newSimElement.current.value;
-    props.addSim(text);
-    newSimElement.current.value = '';
+    console.log(text);
+    props.bll.SetNewSimTitle(text);
   };
 
   return (
     <div>
       <Myinfo />
-      <textarea ref={newSimElement} value="it-fignya"/><button onClick={AddSim}>Создать симуляцию</button>
+      <textarea onChange={onSimChange} ref={newSimElement} value={props.data.newSimTitle}/>
+      <button onClick={AddSim}>Создать симуляцию</button>
       <MySims data={props.data} />
     </div>
   );

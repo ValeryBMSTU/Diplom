@@ -15,7 +15,7 @@ const App = (props) => {
         <Header/>
         <Navbar/>
         <div className='app-wrapper-content'>
-          <Route path="/profile" render={ () => <Profile data={props.data} addSim={props.addSim} />} />
+          <Route path="/profile" render={ () => <Profile data={props.data} bll={props.bll} />} />
           <Route path="/settings" component={Settings} />
           <Route path="/sims" component={SimsList} />
           <Route path="/dialogs" render={ () => <Dialogs data={props.data} />} />
