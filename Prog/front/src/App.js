@@ -15,10 +15,10 @@ const App = (props) => {
         <Header/>
         <Navbar/>
         <div className='app-wrapper-content'>
-          <Route path="/profile" render={ () => <Profile data={props.data} bll={props.bll} />} />
+          <Route path="/profile" render={ () => <Profile store={props.store} />} />
           <Route path="/settings" component={Settings} />
           <Route path="/sims" component={SimsList} />
-          <Route path="/dialogs" render={ () => <Dialogs data={props.data} />} />
+          <Route path="/dialogs" render={ () => <Dialogs store={props.store} />} />
           <Route path="/help" component={Help} />
         </div>
       </div>

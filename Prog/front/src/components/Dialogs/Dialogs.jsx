@@ -5,8 +5,8 @@ import Msg from './Msg/Msg'
 
 const Dialogs = (props) => {
 
-  let dialogsElements = props.data.dialogsData.map(item => <Dlg id={item.id} name={item.name} />);
-  let messagesElements = props.data.messagesData.map(item => <Msg text={item.msg} />);
+  let dialogsElements = props.store.dispatch({type: "GET-DIALOGS"}).map(item => <Dlg id={item.id} name={item.name} />);
+  let messagesElements = props.store.dispatch({type: "GET-MESSAGES"}).map(item => <Msg text={item.msg} />);
 
   return (
       <div className={s.content}>

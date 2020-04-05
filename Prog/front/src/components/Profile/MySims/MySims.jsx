@@ -2,7 +2,7 @@ import React from 'react';
 import Sim from './Sim/Sim'
 
 const MySims = (props) => {
-  let simsElements = props.data.simsData.map((item ) => {
+  let simsElements = props.data.map((item ) => {
     return (
       <Sim title={item.title} text={item.text} />
     )
