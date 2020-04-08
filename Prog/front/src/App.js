@@ -5,9 +5,9 @@ import Navbar from './components/Navbar/Navbar.jsx'
 import Profile from "./components/Profile/Profile";
 import Settings from "./components/Settings/Settings";
 import SimsList from "./components/SimsList/SimsList";
-import Dialogs from "./components/Dialogs/Dialogs";
 import Help from "./components/Help/Help";
 import {Route} from "react-router-dom";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 const App = (props) => {
   return (
@@ -18,7 +18,7 @@ const App = (props) => {
           <Route path="/profile" render={ () => <Profile store={props.store} />} />
           <Route path="/settings" component={Settings} />
           <Route path="/sims" component={SimsList} />
-          <Route path="/dialogs" render={ () => <Dialogs store={props.store} />} />
+          <Route path="/dialogs" render={ () => <DialogsContainer store={props.store} />} />
           <Route path="/help" component={Help} />
         </div>
       </div>

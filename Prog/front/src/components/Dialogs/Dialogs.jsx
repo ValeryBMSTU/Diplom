@@ -4,9 +4,19 @@ import Dlg from './Dlg/Dlg'
 import Msg from './Msg/Msg'
 
 const Dialogs = (props) => {
+  let newMsgElement = React.createRef();
 
-  let dialogsElements = props.store.dispatch({type: "GET-DIALOGS"}).map(item => <Dlg id={item.id} name={item.name} />);
-  let messagesElements = props.store.dispatch({type: "GET-MESSAGES"}).map(item => <Msg text={item.msg} />);
+  let onMsgChange = () => {
+    let text = newMsgElement.current.value;
+    props.changeMsg(text)
+  };
+
+  let onAddMsg = () => {
+    props.addMsg();
+  };
+
+  let dialogsElements = props.dialogsData.map(item => <Dlg id={item.id} name={item.name} />);
+  let messagesElements = props.messagesData.map(item => <Msg text={item.msg} />);
 
   return (
       <div className={s.content}>
@@ -17,6 +27,8 @@ const Dialogs = (props) => {
         <div className={s.messages}>
           Сообщения
           {messagesElements}
+          <textarea onChange={onMsgChange} ref={newMsgElement} value={props.newMsgText}/>
+          <button onClick={onAddMsg} >Кнопочка</button>
         </div>
       </div>
   );
