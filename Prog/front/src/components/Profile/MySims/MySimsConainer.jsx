@@ -1,24 +1,24 @@
-import React from 'react';
 import MySims from "./MySims";
 import {addSimActionCreator, setNewSimTitleActionCreator} from "../../../redux/profileReducer";
+import {connect} from "react-redux";
 
-const MySimsContainer = (props) => {
-
-  let addSim = () => {
-    props.store.dispatch(addSimActionCreator());
+let mapStateToProps = (state) => {
+  return {
+    simsData: state.profilePage.simsData,
+    newSimTitle: state.profilePage.newSimTitle,
   };
-
-  let changeSimTitle = (text) => {
-    props.store.dispatch(setNewSimTitleActionCreator(text));
-  };
-
-  let state = props.store.getState().profilePage;
-
-  return (
-    <div>
-      <MySims simsData={state.simsData} newSimTitle={props.newSimTitle} addSim={addSim} changeSimTitle={changeSimTitle} />
-    </div>
-  );
 };
+let mapDispatchToProps = (dispatch) => {
+  return {
+    addSim: () => {
+      dispatch(addSimActionCreator());
+    },
+    changeSimTitle: (text) => {
+      dispatch(setNewSimTitleActionCreator(text));
+    },
+  };
+};
+
+const MySimsContainer = connect( mapStateToProps, mapDispatchToProps)(MySims)
 
 export default MySimsContainer;

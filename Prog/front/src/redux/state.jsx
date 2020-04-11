@@ -107,6 +107,4 @@ export let store = {
 ;
 export const getSimsActionCreator = () => ({type: GET_SIMS});
 
-window.state = store;
-
 export default store;
