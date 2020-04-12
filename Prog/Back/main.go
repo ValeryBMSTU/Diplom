@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/ValeryBMSTU/Diplom/Prog/Back/api"
+	"github.com/ValeryBMSTU/Diplom/Prog/Back/mv"
 	"github.com/ValeryBMSTU/Diplom/Prog/Back/consts"
 	"github.com/labstack/echo"
 	"log"
@@ -10,6 +11,8 @@ import (
 func main() {
 	e := echo.New()
 	h := &api.Handler{}
+
+	e.Use(mv.CORS)
 
 	if err := api.SetApi(e, h); err != nil {
 		log.Fatal(err)

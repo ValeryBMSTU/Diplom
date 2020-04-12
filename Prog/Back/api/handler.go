@@ -9,6 +9,7 @@ type IHandler interface {
 	/* profile */
 	Login(ctx echo.Context) error      // Авторизация
 	Reg(ctx echo.Context) error        // Регистрация
+	GetUsers(ctx echo.Context) error
 	GetUser(ctx echo.Context) error    // Получение профилья другого пользователя
 	GetProfile(ctx echo.Context) error // Получение профиля текущего пользователя
 	SetProfile(ctx echo.Context) error // Изменение профиля текущего пользователя
@@ -39,10 +40,11 @@ func SetApi(e *echo.Echo, h IHandler) error {
 
 	e.POST("/users/login", h.Login)
 	e.POST("/users/reg", h.Reg)
+	e.GET("/users", h.GetUsers)
 	e.GET("/users/:id", h.GetUser)
-	e.GET("/users/profile", h.GetProfile)
-	e.PUT("/users/profile", h.SetProfile)
-	e.GET("/users/sims", h.GetSims)
+	e.GET("/users/:id/profile", h.GetProfile)
+	e.PUT("/users/:id/profile", h.SetProfile)
+	e.GET("/users/:id/sims", h.GetSims)
 
 	e.POST("/sims/start", h.Start)
 	e.PUT("/sims/config/:id", h.Config)

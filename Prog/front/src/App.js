@@ -8,6 +8,7 @@ import SimsList from "./components/SimsList/SimsList";
 import Help from "./components/Help/Help";
 import {Route} from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import UsersListContainer from "./components/UsersList/UsersLIstContainer";
 
 const App = (props) => {
   return (
@@ -18,8 +19,10 @@ const App = (props) => {
           <Route path="/profile" render={ () => <Profile store={props.store} />} />
           <Route path="/settings" component={Settings} />
           <Route path="/sims" component={SimsList} />
+          <Route path='/users' component={ () => <UsersListContainer store={props.store} />} />
           <Route path="/dialogs" render={ () => <DialogsContainer store={props.store} />} />
           <Route path="/help" component={Help} />
+
         </div>
       </div>
   );
