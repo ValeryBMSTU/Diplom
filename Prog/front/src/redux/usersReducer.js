@@ -4,7 +4,10 @@ const MORE = "MORE";
 const SET_USERS = "SET-USERS";
 
 let initState = {
-  users: []
+  users: [],
+  usersCount: 0,
+  currentCount: 0,
+  currentPage: 1
   // users: [
   //   {id: 1, fullName: "Bozhe",
   //     status: "nil", country: "Belarus",
@@ -60,10 +63,21 @@ const usersReducer = (state = initState, action) => {
       };
     case MORE: return;
     case SET_USERS:
+      debugger;
       return {
         ...state,
-        users: [...state.users, ...action.users],
+        users: [...action.users],
+        usersCount: action.usersCount,
+        currentCount: action.currentCount,
+        currentPage: action.currentPage
       };
+    // case SET_PAGE:
+    //   return {
+    //     ...state,
+    //     currentPage: action.currentPage
+    //     currentCount: action.
+    //
+    //   }
     default:
       return state;
   }
@@ -75,7 +89,8 @@ export const unsubActionCreator = (userID) =>
   ({type: UNSUB, id: userID});
 export const moreActionCreator = (userID) =>
   ({type: MORE, id: userID});
-export const setUsersActionCreator = (users) =>
-  ({type: SET_USERS, users: users});
+export const setUsersActionCreator = (users, usersCount, currentCount, currentPage) =>
+  ({type: SET_USERS, users: users, usersCount: usersCount,
+    currentCount: currentCount, currentPage: currentPage});
 
 export default usersReducer;

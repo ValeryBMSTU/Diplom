@@ -3,96 +3,84 @@ import s from "./UsersList.module.css"
 import * as axios from "axios";
 import userDefaultAva from "../../asserts/images/dafault_ava.png"
 
-const UsersList = (props) => {
+class UsersList extends React.Component  {
 
-  if (props.usersList.users.length === 0) {
+   componentDidMount() {
+     Math.ceil(5)
 
-    axios.get("http://localhost:8080/users").then(response => {
+    axios.get("http://localhost:8080/users?current_page=1&count=4").then(response => {
         debugger;
-        props.setUsers(response.data)
+        this.props.setUsers(response.data.body.users, response.data.body.users_count,
+          4, 1)
       });
+   }
 
+   changePage(p) {
+     debugger;
+     axios.get(`http://localhost:8080/users?current_page=${p}&count=4`).then(response => {
+       debugger;
+       this.props.setUsers(response.data.body.users, response.data.body.users_count,
+         4, p)
+     });
+   }
 
+  render() {
+    let pagesCount = Math.ceil(this.props.usersList.usersCount / this.props.usersList.currentCount);
 
-    // props.setUsers(
-    //   [
-    //       {
-    //         id: 1, fullName: "Bozhe",
-    //         status: "nil", country: "Belarus",
-    //         city: "Minsk", followed: true
-    //       },
-    //       {
-    //         id: 2, fullName: "Kirik",
-    //         status: "nil", country: "Belarus",
-    //         city: "Minsk", followed: false
-    //       },
-    //       {
-    //         id: 3, fullName: "Danya",
-    //         status: "nil", country: "Belarus",
-    //         city: "Minsk", followed: true
-    //       },
-    //       {
-    //         id: 3, fullName: "Danya",
-    //         status: "nil", country: "Belarus",
-    //         city: "Minsk", followed: true
-    //       },
-    //       {
-    //         id: 4, fullName: "Bob Robinson",
-    //         status: "nil", country: "Belarus",
-    //         city: "Minsk", followed: false
-    //       },
-    //       {
-    //         id: 5, fullName: "Dima Lebedev",
-    //         status: "nil", country: "Belarus",
-    //         city: "Minsk", followed: false
-    //       },
-    //       {
-    //         id: 6, fullName: "Dun Shon",
-    //         status: "nil", country: "Belarus",
-    //         city: "Minsk", followed: true
-    //       },
-    //       {
-    //         id: 7, fullName: "Ali",
-    //         status: "nil", country: "Belarus",
-    //         city: "Minsk", followed: false
-    //       },
-    //       {
-    //         id: 8, fullName: "Nina",
-    //         status: "nil", country: "Belarus",
-    //         city: "Minsk", followed: true
-    //       },
-    //   ]
-    // );
-  }
+    let pages = [];
+    debugger;
+    for (let i = 1; i <= pagesCount; i = i + 1) {
+      pages.push(i)
+    }
 
   return (
-    <div className={s.item}>
-      {
-        props.usersList.users.map(u => <div key={u.id}>
-          <span>
-            <div>
-              <img src={u.ava !== "" ? u.ava : userDefaultAva}/>
-            </div>
-            <div>
-              {u.followed
-                ? <button onClick={() => {props.unsub(u.id)}}>unsubscribe</button>
-                : <button onClick={() => {props.sub(u.id)}}>subscribe</button>}
-            </div>
-          </span>
-          <span>
+    <div>
+      <div>
+        {
+          pages.map(p => {
+            return (<span className={this.props.usersList.currentPage === p ? s.selectedPage : ""}
+            onClick={() => {this.changePage(p)}}>{p}</span>)
+          })
+        }
+        {/*<span className={s.selectedPage}>1</span>*/}
+        {/*<span className={s.selectedPage}>2</span>*/}
+        {/*<span className={s.selectedPage}>3</span>*/}
+        {/*<span className={s.selectedPage}>4</span>*/}
+        {/*<span className={s.selectedPage}>5</span>*/}
+      </div>
+      <div className={s.item}>
+        {
+          this.props.usersList.users.map(u => <div key={u.id}>
             <span>
-              <div>{u.name}</div>
-              <div>{u.status}</div>
+              <div>
+                <img src={u.ava !== "" ? u.ava : userDefaultAva} alt="Чет пошло не так"/>
+              </div>
+              <div>
+                {u.followed
+                  ? <button onClick={() => {
+                    this.props.unsub(u.id)
+                  }}>unsubscribe</button>
+                  : <button onClick={() => {
+                    this.props.sub(u.id)
+                  }}>subscribe</button>}
+              </div>
             </span>
             <span>
-              <div>Belarus</div>
-              <div>Minsk</div>
+              <span>
+                <div>{u.name}</div>
+                <div>{u.status}</div>
+              </span>
+              <span>
+                <div>Belarus</div>
+                <div>Minsk</div>
+              </span>
             </span>
-          </span>
-        </div>)
-      }
+          </div>)
+        }
+      </div>
     </div>
   )
-};
+  }
+}
 
 export default UsersList;

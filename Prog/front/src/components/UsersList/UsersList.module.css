@@ -1,5 +1,8 @@
 .item img {
-    width: 25px;
-    height: 25px;
-    border-radius: 20px;
+    width: 100px;
+    height: 100px;
+}
+
+.selectedPage {
+    font-weight: bold;
 }

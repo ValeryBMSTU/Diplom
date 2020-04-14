@@ -21,8 +21,8 @@ let mapDispatchToProps = (dispatch) => {
     more: (userID) => {
       dispatch(moreActionCreator(userID))
     },
-    setUsers: (users) => {
-      dispatch(setUsersActionCreator(users))
+    setUsers: (users, usersCount, currentCount, currentPage) => {
+      dispatch(setUsersActionCreator(users, usersCount, currentCount, currentPage))
     },
   };
 };
