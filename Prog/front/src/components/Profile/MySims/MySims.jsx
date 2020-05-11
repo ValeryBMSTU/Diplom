@@ -2,11 +2,15 @@ import React from 'react';
 import Sim from './Sim/Sim'
 
 const MySims = (props) => {
-  let simsElements = props.simsData.map((item ) => {
-    return (
-      <Sim title={item.title} text={item.text} />
-    )
-  });
+
+  let simsElements = [];
+  if (props.profile !== null) {
+    simsElements = props.profile.sims.map((item) => {
+      return (
+        <Sim title={item.title} text={item.desc}/>
+      )
+    });
+  }
 
   let newSimElement = React.createRef();
 
@@ -15,14 +19,14 @@ const MySims = (props) => {
   };
 
   let onChangeSimTitle = () => {
-    props.changeSimTitle(newSimElement.current.value);
+    props.setNewSimTitle(newSimElement.current.value);
   };
 
   return (
     <div className='sims'>
       My simulations
       {simsElements}
-      <textarea onChange={onChangeSimTitle} ref={newSimElement} value={props.newSimTitle }/>
+      <textarea onChange={onChangeSimTitle} ref={newSimElement} value={props.newSimTitle}/>
       <button onClick={onAddSim}>Создать симуляцию</button>
     </div>
   );

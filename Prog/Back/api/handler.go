@@ -7,13 +7,15 @@ type IHandler interface {
 	Status(ctx echo.Context) error // Проверка статуса сервера
 
 	/* profile */
-	Login(ctx echo.Context) error      // Авторизация
-	Reg(ctx echo.Context) error        // Регистрация
-	GetUsers(ctx echo.Context) error
-	GetUser(ctx echo.Context) error    // Получение профилья другого пользователя
-	GetProfile(ctx echo.Context) error // Получение профиля текущего пользователя
-	SetProfile(ctx echo.Context) error // Изменение профиля текущего пользователя
-	GetSims(ctx echo.Context) error    // Получение списка симуляций текущего пользователя
+	Login(ctx echo.Context) error       // Авторизация
+	Reg(ctx echo.Context) error         // Регистрация
+	GetUsers(ctx echo.Context) error    // Получение списка пользователей
+	GetUser(ctx echo.Context) error     // Получение пользователя
+	GetProfile(ctx echo.Context) error  // Получение профиля пользователя
+	GetSettings(ctx echo.Context) error // Получение настроек профиля текущего пользователя
+	SetSettings(ctx echo.Context) error // Изменение настроек текущего пользователя
+	GetSims(ctx echo.Context) error     // Получение списка симуляций текущего пользователя
+	Subscribe(ctx echo.Context) error   // Подписка на пользователя
 
 	/* sim */
 	Start(ctx echo.Context) error  // Запуск моделирования
@@ -43,8 +45,10 @@ func SetApi(e *echo.Echo, h IHandler) error {
 	e.GET("/users", h.GetUsers)
 	e.GET("/users/:id", h.GetUser)
 	e.GET("/users/:id/profile", h.GetProfile)
-	e.PUT("/users/:id/profile", h.SetProfile)
+	e.GET("/users/:id/settings", h.GetSettings)
+	e.PUT("/users/:id/settings", h.SetSettings)
 	e.GET("/users/:id/sims", h.GetSims)
+	e.POST("/users/:id/subscribe", h.Subscribe)
 
 	e.POST("/sims/start", h.Start)
 	e.PUT("/sims/config/:id", h.Config)

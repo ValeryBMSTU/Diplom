@@ -1,32 +1,24 @@
 import {connect} from "react-redux";
-import UsersList from "./UsersList";
-import {subActionCreator} from "../../redux/usersReducer";
-import {unsubActionCreator} from "../../redux/usersReducer";
-import {moreActionCreator} from "../../redux/usersReducer";
-import {setUsersActionCreator} from "../../redux/usersReducer";
+import UsersListAPI from "./UsersListAPI";
+import {sub} from "../../redux/usersReducer";
+import {unsub} from "../../redux/usersReducer";
+import {more} from "../../redux/usersReducer";
+import {setUsers} from "../../redux/usersReducer";
+import {toggleIsFetching} from "../../redux/usersReducer"
 
 let mapStateToProps = (state) => {
   return {
     usersList: state.usersPage
   };
 };
-let mapDispatchToProps = (dispatch) => {
-  return {
-    sub: (userID) => {
-      dispatch(subActionCreator(userID))
-    },
-    unsub: (userID) => {
-      dispatch(unsubActionCreator(userID))
-    },
-    more: (userID) => {
-      dispatch(moreActionCreator(userID))
-    },
-    setUsers: (users, usersCount, currentCount, currentPage) => {
-      dispatch(setUsersActionCreator(users, usersCount, currentCount, currentPage))
-    },
-  };
-};
 
-const UsersListContainer = connect(mapStateToProps, mapDispatchToProps)(UsersList);
+const UsersListContainer = connect(mapStateToProps,
+  { sub,
+    unsub,
+    more,
+    setUsers,
+    toggleIsFetching
+  }
+  )(UsersListAPI);
 
 export default UsersListContainer;

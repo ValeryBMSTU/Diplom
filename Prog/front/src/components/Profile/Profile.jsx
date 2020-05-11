@@ -1,12 +1,13 @@
 import React from 'react';
-import MySimsContainer from "./MySims/MySimsConainer";
-import Myinfo from "./MyInfo/MyInfo"
+import MySims from "./MySims/MySims";
+import MyInfo from "./MyInfo/MyInfo"
 
 const Profile = (props) => {
   return (
     <div>
-      <Myinfo />>
-      <MySimsContainer store={props.store} />
+      <MyInfo profile={props.profilePage.profile} setProfile={props.setProfile}/>
+      <MySims profile={props.profilePage.profile} newSimTitle={props.profilePage.newSimTitle}
+                       addSim={props.addSim} setNewSimTitle={props.setNewSimTitle}/>
     </div>
   );
 };

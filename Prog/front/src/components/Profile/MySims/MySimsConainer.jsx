@@ -1,5 +1,5 @@
 import MySims from "./MySims";
-import {addSimActionCreator, setNewSimTitleActionCreator} from "../../../redux/profileReducer";
+import {addSim, setNewSimTitle} from "../../../redux/profileReducer";
 import {connect} from "react-redux";
 
 let mapStateToProps = (state) => {
@@ -11,14 +11,14 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
   return {
     addSim: () => {
-      dispatch(addSimActionCreator());
+      dispatch(addSim());
     },
     changeSimTitle: (text) => {
-      dispatch(setNewSimTitleActionCreator(text));
+      dispatch(setNewSimTitle(text));
     },
   };
 };
 
-const MySimsContainer = connect( mapStateToProps, mapDispatchToProps)(MySims)
+const MySimsContainer = connect( mapStateToProps, mapDispatchToProps)(MySims);
 
 export default MySimsContainer;
