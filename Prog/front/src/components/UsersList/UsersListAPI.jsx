@@ -2,27 +2,15 @@ import React from "react";
 import * as axios from "axios";
 import UsersList from "./UsersList"
 import Spinner from "../Common/Spinner"
-import {getUsers} from "../../api/api"
 
 class UsersListAPI extends React.Component  {
 
   componentDidMount() {
-    this.props.toggleIsFetching();
-    getUsers(1).then(data => {
-      this.props.toggleIsFetching();
-      this.props.setUsers(data.body.users, data.body.users_count,
-        4, 1)
-    });
+    this.props.getUsers(1);
   };
 
   changePage = (p) => {
-    this.props.toggleIsFetching();
-    getUsers(p).then(data => {
-      debugger;
-      this.props.toggleIsFetching();
-      this.props.setUsers(data.body.users, data.body.users_count,
-        4, p)
-   });
+    this.props.getUsers(p)
   };
 
   sub = (id) => {

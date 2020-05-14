@@ -6,10 +6,23 @@ const instance = axios.create({
   headers: {},
 });
 
-export const getUsers = (page) => {
-  return instance.get(`users?current_page=${page}&count=4`).then((response) => {
-    return response.data;
-  })
+export const UserDAL = {
+  getUsers(page) {
+    return instance.get(`users?current_page=${page}&count=4`).then(response => {
+      return response.data;
+    })
+  }
 };
 
-// export const
+export const AuthDAL = {
+  SignIn(email, password) {
+    return instance.post(`users/login?email=${email}&password=${password}`).then(response => {
+      return response.data.body.auth_info
+    })
+  },
+  SignUp(email, password, repeatPassword) {
+    return instance.post(`users/reg?email=${email}&password=${password}&repeat_password=${repeatPassword}`).then(response => {
+      return response.data.body.auth_info
+    })
+  }
+};

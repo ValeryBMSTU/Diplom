@@ -6,9 +6,11 @@ type IHandler interface {
 	/* status */
 	Status(ctx echo.Context) error // Проверка статуса сервера
 
-	/* profile */
+	/* auth */
 	Login(ctx echo.Context) error       // Авторизация
 	Reg(ctx echo.Context) error         // Регистрация
+
+	/* user */
 	GetUsers(ctx echo.Context) error    // Получение списка пользователей
 	GetUser(ctx echo.Context) error     // Получение пользователя
 	GetProfile(ctx echo.Context) error  // Получение профиля пользователя
@@ -42,6 +44,8 @@ func SetApi(e *echo.Echo, h IHandler) error {
 
 	e.POST("/users/login", h.Login)
 	e.POST("/users/reg", h.Reg)
+
+
 	e.GET("/users", h.GetUsers)
 	e.GET("/users/:id", h.GetUser)
 	e.GET("/users/:id/profile", h.GetProfile)

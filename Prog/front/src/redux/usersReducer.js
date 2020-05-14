@@ -1,3 +1,5 @@
+import {UserDAL} from "../api/api";
+
 const SUB = "SUB";
 const UNSUB = "UNSUB";
 const MORE = "MORE";
@@ -64,5 +66,16 @@ export const setUsers = (users, usersCount, currentCount, currentPage) =>
     currentCount: currentCount, currentPage: currentPage});
 export const toggleIsFetching = () =>
   ({type: TOGGLE_IS_FETCHING});
+
+export const getUsers = (page) => {
+  return (dispatch) => {
+    dispatch(toggleIsFetching());
+    UserDAL.getUsers(page).then(data => {
+      dispatch(toggleIsFetching());
+      dispatch(setUsers(data.body.users, data.body.users_count,
+        4, 1))
+    });
+  }
+};
 
 export default usersReducer;

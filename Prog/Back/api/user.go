@@ -12,6 +12,8 @@ var allUsers = []models.User{
 	{
 		Name:     "Jon",
 		ID:       0,
+		Email: "email@mail.com",
+		Password: "pass",
 		Status:   "Cookies is my life",
 		Followed: true,
 	},
@@ -19,12 +21,16 @@ var allUsers = []models.User{
 		Name:     "Bob",
 		Ava: "https://www.asdorural.com/upload/iblock/9c4/9c4cbce38ad2fddd7a592098692cf4d1.png",
 		ID:       1,
+		Email: "email@mail.com",
+		Password: "pass",
 		Status:   "Cookies is not my life",
 		Followed: false,
 	},
 	{
 		Name:     "Bilbo",
 		ID:       2,
+		Email: "email@mail.com",
+		Password: "pass",
 		Status:   "Dildon THE great",
 		Followed: true,
 	},
@@ -32,6 +38,8 @@ var allUsers = []models.User{
 		Name:     "Kirik",
 		Ava: "https://www.asdorural.com/upload/iblock/9c4/9c4cbce38ad2fddd7a592098692cf4d1.png",
 		ID:       3,
+		Email: "kirikl@mail.com",
+		Password: "kirik",
 		Status:   "Cookies is my life",
 		Followed: true,
 	},
@@ -39,43 +47,27 @@ var allUsers = []models.User{
 		Name:     "Jon",
 		Ava: "https://www.asdorural.com/upload/iblock/9c4/9c4cbce38ad2fddd7a592098692cf4d1.png",
 		ID:       4,
+		Email: "email@mail.com",
+		Password: "pass",
 		Status:   "Cookies is not my life",
 		Followed: false,
 	},
 	{
 		Name:     "DoggyHunter",
 		ID:       5,
+		Email: "email@mail.com",
+		Password: "pass",
 		Status:   "Dildon THE great",
 		Followed: true,
 	},
 	{
 		Name:     "XXX",
 		ID:       6,
+		Email: "email@mail.com",
+		Password: "pass",
 		Status:   "Dildon THE great",
 		Followed: true,
 	},
-}
-
-func (h *Handler) Login(ctx echo.Context) error {
-	authInfo := models.AuthInfo{
-		IsAuth: true,
-		ID: 2,
-		Login: "Jon42",
-		Ava: "https://avatars.mds.yandex.net/get-pdb/224463/468ff8a9-cac9-41c1-9876-c54d4f21d3a6/s1200",
-	}
-
-	body := struct {
-		AuthInfo models.AuthInfo `json:"auth_info"`
-	}{authInfo}
-
-	meta := Meta{}
-
-	return ctx.JSON(http.StatusOK, GeneralResp{body, meta})
-}
-
-func (h *Handler) Reg(ctx echo.Context) error {
-	ctx.String(http.StatusOK, ctx.Path()+" was hit")
-	return nil
 }
 
 func (h *Handler) GetUsers(ctx echo.Context) error {
