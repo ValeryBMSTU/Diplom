@@ -5,7 +5,6 @@ import Profile from "./Profile"
 class ProfileAPI extends React.Component {
 
   componentDidMount() {
-    debugger;
     let id = this.props.match.params.id
     if (!id) {
       id = 2

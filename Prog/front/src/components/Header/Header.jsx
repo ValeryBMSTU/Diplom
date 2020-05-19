@@ -9,9 +9,9 @@ const Header = (props) => {
            alt="Чет пошло не так"/>
       {!props.authData.isAuth
         ? <div className={s.loginBlock}>
-            <NavLink to={"/registration"}><button className={s.signUp}>Sign up</button></NavLink>
-            {/*<NavLink to={"/login"}><button className={s.signIn}>Sign in</button></NavLink>*/}
-            <button className={s.signIn} onClick={props.signIn}>Sign in</button>
+            <NavLink to={"/bib"}><button className={s.signUp}>Sign up</button></NavLink>
+            <NavLink to={"/login"}><button className={s.signIn}>Sign in</button></NavLink>
+            {/*<button className={s.signIn} onClick={props.signIn}>Sign in</button>*/}
           </div>
         : <div className={s.authorizedBlock}>
             {props.authData.login}

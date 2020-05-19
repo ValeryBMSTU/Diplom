@@ -15,6 +15,11 @@ type AuthInfo struct {
 	Ava string `json:"ava"`
 }
 
+type Session struct {
+	Key string `json:"key"`
+	UserID uint64 `json:"user_id"`
+}
+
 type User struct {
 	ID        	uint64 `json:"id"`
 	Email	  	string `json:"email"`

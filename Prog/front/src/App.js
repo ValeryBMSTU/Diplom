@@ -9,7 +9,8 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersListContainer from "./components/UsersList/UsersLIstContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import Login from "./components/Login/Login";
+import LoginContainer from "./components/Login/LoginContainers";
+import Reg from "./components/Reg/Reg";
 
 const App = (props) => {
   return (
@@ -17,7 +18,8 @@ const App = (props) => {
         <HeaderContainer store={props.store}/>
         <Navbar/>
         <div className='app-wrapper-content'>
-          <Route path="/login" render component={Login} />
+          <Route path='/bib' render={ () => <Reg store={props.store} />} />
+          <Route path="/login" render={ () => <LoginContainer store={props.store} />} />
           <Route path="/profile/:id?" render={ () => <ProfileContainer store={props.store} />} />
           <Route path="/settings" component={Settings} />
           <Route path="/sims" component={SimsList} />

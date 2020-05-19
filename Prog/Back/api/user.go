@@ -38,7 +38,7 @@ var allUsers = []models.User{
 		Name:     "Kirik",
 		Ava: "https://www.asdorural.com/upload/iblock/9c4/9c4cbce38ad2fddd7a592098692cf4d1.png",
 		ID:       3,
-		Email: "kirikl@mail.com",
+		Email: "kirik@mail.com",
 		Password: "kirik",
 		Status:   "Cookies is my life",
 		Followed: true,

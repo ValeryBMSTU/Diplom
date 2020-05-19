@@ -4,9 +4,10 @@ import (
 	"github.com/ValeryBMSTU/Diplom/Prog/Back/models"
 	"github.com/labstack/echo"
 	"net/http"
+	"time"
 )
 
-
+var sessions []models.Session
 
 func (h *Handler) Login(ctx echo.Context) error {
 	email := ctx.QueryParam("email")
@@ -26,6 +27,8 @@ func (h *Handler) Login(ctx echo.Context) error {
 		}
 	}
 
+
+
 	if authInfo == nil {
 		errMsg := "User did not found"
 
@@ -33,6 +36,20 @@ func (h *Handler) Login(ctx echo.Context) error {
 			GeneralResp{nil, Meta{Err: &errMsg}})
 	}
 
+	cookie := new(http.Cookie)
+
+	cookie.Name = "key"
+	cookie.Value = "123"
+
+	cookie.Expires = time.Now().Add(24*30*time.Hour)
+
+	sessions = append(sessions,
+		models.Session{
+		Key: cookie.Value,
+		UserID: authInfo.ID,
+		})
+
+	ctx.SetCookie(cookie)
 
 	body := struct {
 		AuthInfo models.AuthInfo `json:"auth_info"`

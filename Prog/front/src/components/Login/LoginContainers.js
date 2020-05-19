@@ -10,8 +10,8 @@ class LoginAPI extends React.Component {
   }
 
   render() {
-    return <Login SignIn={this.SignIn}
-                  SignUp={this.SignUp}
+    return <Login SignIn={this.props.SignIn}
+                  SignUp={this.props.SignUp}
                   authData={this.props.authData} />;
   }
 }

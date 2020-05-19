@@ -16,7 +16,9 @@ export const UserDAL = {
 
 export const AuthDAL = {
   SignIn(email, password) {
+    debugger;
     return instance.post(`users/login?email=${email}&password=${password}`).then(response => {
+      debugger;
       return response.data.body.auth_info
     })
   },
