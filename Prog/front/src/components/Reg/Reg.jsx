@@ -6,10 +6,10 @@ let RegForm = (props) => {
   return (
     <form onSubmit={props.handleSubmit}>
       <div>
-        <Field store={props.store} placeholder={"Email"} name={"email"} component={"input"} />
+        <Field placeholder={"Email"} name={"email"} component={"input"} />
       </div>
       <div>
-        <Field store={props.store} placeholder={"Password"} name={"password"} component={"input"} />
+        <Field placeholder={"Password"} name={"password"} component={"input"} />
       </div>
       <div>
         <button>Нажми меня</button>
@@ -31,7 +31,7 @@ class Reg extends React.Component {
     return (
       <div>
         <h1>Registration</h1>
-        <RegReduxForm onSubmit={this.onSubmit} store={this.props.store}/>
+        <RegReduxForm onSubmit={this.onSubmit}/>
       </div>
     )
   }

@@ -18,13 +18,13 @@ const App = (props) => {
         <HeaderContainer store={props.store}/>
         <Navbar/>
         <div className='app-wrapper-content'>
-          <Route path='/bib' render={ () => <Reg store={props.store} />} />
-          <Route path="/login" render={ () => <LoginContainer store={props.store} />} />
-          <Route path="/profile/:id?" render={ () => <ProfileContainer store={props.store} />} />
+          <Route path='/bib' render={ () => <Reg/>} />
+          <Route path="/login" render={ () => <LoginContainer/>} />
+          <Route path="/profile/:id?" render={ () => <ProfileContainer/>} />
           <Route path="/settings" component={Settings} />
           <Route path="/sims" component={SimsList} />
-          <Route path='/users' component={ () => <UsersListContainer store={props.store} />} />
-          <Route path="/dialogs" render={ () => <DialogsContainer store={props.store} />} />
+          <Route path='/users' component={ () => <UsersListContainer/>} />
+          <Route path="/dialogs" render={ () => <DialogsContainer/>} />
           <Route path="/help" component={Help} />
         </div>
       </div>

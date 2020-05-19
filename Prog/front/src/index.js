@@ -5,10 +5,13 @@ import ReactDOM from "react-dom";
 import {BrowserRouter} from "react-router-dom";
 import App from "./App";
 import React from "react";
+import {Provider} from "react-redux";
 
 ReactDOM.render(
   <BrowserRouter>
-    <App store={store}/>
+    <Provider store={store}>
+      <App/>
+    </Provider>
   </BrowserRouter>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
