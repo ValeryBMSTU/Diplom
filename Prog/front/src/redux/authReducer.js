@@ -56,17 +56,19 @@ export const setAuthData = (isAuth, userID, login, ava) =>
 export const SignIn = (email, password) => {
   return (dispatch) => {
     AuthDAL.SignIn(email, password).then(data => {
-      let {is_auth, id, login, ava} = data;
-      dispatch(setAuthData(is_auth, id, login, ava));
+      let {is_auth, id, nickname, ava} = data;
+      dispatch(setAuthData(is_auth, id, nickname, ava));
     })
   }
 };
 
-export const SignUp = (email, password) => {
+export const SignUp = (nickname, email, password) => {
   return (dispatch) => {
-    AuthDAL.SignUp(email, password).then(data => {
-      let {is_auth, id, login, ava} = data;
-      dispatch(setAuthData(is_auth, id, login, ava));
+    debugger;
+    AuthDAL.SignUp(nickname, email, password).then(data => {
+      let {is_auth, id, nickname, ava} = data;
+      debugger;
+      dispatch(setAuthData(is_auth, id, nickname, ava));
     })
   }
 };

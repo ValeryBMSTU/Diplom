@@ -1,3 +1,22 @@
+# github.com/jackc/chunkreader/v2 v2.0.1
+github.com/jackc/chunkreader/v2
+# github.com/jackc/pgconn v1.5.0
+github.com/jackc/pgconn
+github.com/jackc/pgconn/internal/ctxwatch
+github.com/jackc/pgconn/stmtcache
+# github.com/jackc/pgio v1.0.0
+github.com/jackc/pgio
+# github.com/jackc/pgpassfile v1.0.0
+github.com/jackc/pgpassfile
+# github.com/jackc/pgproto3/v2 v2.0.1
+github.com/jackc/pgproto3/v2
+# github.com/jackc/pgservicefile v0.0.0-20200307190119-3430c5407db8
+github.com/jackc/pgservicefile
+# github.com/jackc/pgtype v1.3.0
+github.com/jackc/pgtype
+# github.com/jackc/pgx/v4 v4.6.0
+github.com/jackc/pgx/v4
+github.com/jackc/pgx/v4/internal/sanitize
 # github.com/labstack/echo v3.3.10+incompatible
 github.com/labstack/echo
 # github.com/labstack/gommon v0.3.0
@@ -11,15 +30,28 @@ github.com/mattn/go-isatty
 github.com/valyala/bytebufferpool
 # github.com/valyala/fasttemplate v1.0.1
 github.com/valyala/fasttemplate
-# golang.org/x/crypto v0.0.0-20200320181102-891825fb96df
+# golang.org/x/crypto v0.0.0-20200323165209-0ec3e9974c59
 golang.org/x/crypto/acme
 golang.org/x/crypto/acme/autocert
-# golang.org/x/net v0.0.0-20190404232315-eb5bcb51f2a3
+golang.org/x/crypto/pbkdf2
+# golang.org/x/net v0.0.0-20190813141303-74dc4d7220e7
 golang.org/x/net/idna
-# golang.org/x/sys v0.0.0-20190813064441-fde4db37ae7a
+# golang.org/x/sys v0.0.0-20190826190057-c7b8b68b1456
 golang.org/x/sys/unix
-# golang.org/x/text v0.3.0
+# golang.org/x/text v0.3.2
+golang.org/x/text/cases
+golang.org/x/text/internal
+golang.org/x/text/internal/language
+golang.org/x/text/internal/language/compact
+golang.org/x/text/internal/tag
+golang.org/x/text/language
+golang.org/x/text/runes
 golang.org/x/text/secure/bidirule
+golang.org/x/text/secure/precis
 golang.org/x/text/transform
 golang.org/x/text/unicode/bidi
 golang.org/x/text/unicode/norm
+golang.org/x/text/width
+# golang.org/x/xerrors v0.0.0-20190717185122-a985d3407aa7
+golang.org/x/xerrors
+golang.org/x/xerrors/internal

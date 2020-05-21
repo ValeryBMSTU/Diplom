@@ -1,12 +1,13 @@
 CREATE TABLE IF NOT EXISTS public.user (
-  id SERIAL PRIMARY KEY,
-  login VARCHAR UNIQUE NOT NULL,
-  email VARCHAR UNIQUE NOT NULL,
-  password VARCHAR NOT NULL,
-  ava_path VARCHAR,
-  role VARCHAR NOT NULL,
-  is_blocked BOOL NOT NULL DEFAULT false,
-  is_deleted BOOL NOT NULL DEFAULT false
+    id SERIAL PRIMARY KEY,
+    nickname VARCHAR UNIQUE NOT NULL,
+    email VARCHAR UNIQUE NOT NULL,
+    password VARCHAR NOT NULL,
+    about TEXT,
+    ava_path VARCHAR,
+    role VARCHAR NOT NULL DEFAULT 'user',
+    is_blocked BOOL NOT NULL DEFAULT false,
+    is_deleted BOOL NOT NULL DEFAULT false
 );
 
 CREATE TABLE IF NOT EXISTS public.session (

@@ -1,15 +1,32 @@
 import React from "react";
 import {Field, reduxForm} from "redux-form";
+import {maxLength, requiredField} from "../../utils/validators"
+import {Input} from "../Common/FormsControls"
+import {compose} from "redux";
+import {connect} from "react-redux";
+import {SignUp} from "../../redux/authReducer";
+
+let maxLengthValidator = maxLength(30)
 
 let RegForm = (props) => {
-  debugger;
   return (
     <form onSubmit={props.handleSubmit}>
       <div>
-        <Field placeholder={"Email"} name={"email"} component={"input"} />
+        <Field placeholder={"Nickname"}
+               name={"nickname"}
+               component={Input}
+               validate={[requiredField, maxLengthValidator]}/>
       </div>
       <div>
-        <Field placeholder={"Password"} name={"password"} component={"input"} />
+        <Field placeholder={"Email"}
+               name={"email"}
+               component={Input}
+               validate={[requiredField, maxLengthValidator]}/>
+      </div>
+      <div>
+        <Field placeholder={"Password"}
+               name={"password"}
+               component={"input"} />
       </div>
       <div>
         <button>Нажми меня</button>
@@ -22,12 +39,11 @@ let RegReduxForm = reduxForm({form: 'reg'})(RegForm);
 
 class Reg extends React.Component {
   onSubmit = (formData) => {
-    console.log(formData)
+    this.props.SignUp(formData.nickname, formData.email, formData.password)
   };
 
 
   render() {
-    debugger;
     return (
       <div>
         <h1>Registration</h1>
@@ -35,6 +51,14 @@ class Reg extends React.Component {
       </div>
     )
   }
+}
+
+let mapStateToProps = (state) => {
+  return {};
 };
 
-export default Reg;
+let RegContainer = compose(
+  connect(mapStateToProps, {SignUp})
+)(Reg);
+
+export default RegContainer;

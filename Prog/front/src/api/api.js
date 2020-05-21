@@ -16,14 +16,13 @@ export const UserDAL = {
 
 export const AuthDAL = {
   SignIn(email, password) {
-    debugger;
     return instance.post(`users/login?email=${email}&password=${password}`).then(response => {
       debugger;
       return response.data.body.auth_info
     })
   },
-  SignUp(email, password, repeatPassword) {
-    return instance.post(`users/reg?email=${email}&password=${password}&repeat_password=${repeatPassword}`).then(response => {
+  SignUp(nickname, email, password) {
+    return instance.post(`users/reg?nickname=${nickname}&email=${email}&password=${password}`).then(response => {
       return response.data.body.auth_info
     })
   }

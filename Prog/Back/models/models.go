@@ -11,7 +11,7 @@ type Message struct {
 type AuthInfo struct {
 	IsAuth bool `json:"is_auth"`
 	ID uint64 `json:"id"`
-	Login string `json:"login"`
+	Nickname string `json:"nickname"`
 	Ava string `json:"ava"`
 }
 
@@ -22,6 +22,7 @@ type Session struct {
 
 type User struct {
 	ID        	uint64 `json:"id"`
+	Nickname	string `json:"nickname"`
 	Email	  	string `json:"email"`
 	Password 	string `json:"-"`
 	Name	  	string `json:"name"`

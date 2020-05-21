@@ -1,6 +1,7 @@
 package api
 
 import "github.com/labstack/echo"
+import "github.com/ValeryBMSTU/Diplom/Prog/Back/bll"
 
 type IHandler interface {
 	/* status */
@@ -37,6 +38,13 @@ type IHandler interface {
 }
 
 type Handler struct {
+	bll bll.Bll
+}
+
+func NewHandler(useCase bll.Bll) IHandler {
+	return &Handler{
+		bll: useCase,
+	}
 }
 
 func SetApi(e *echo.Echo, h IHandler) error {
@@ -44,7 +52,6 @@ func SetApi(e *echo.Echo, h IHandler) error {
 
 	e.POST("/users/login", h.Login)
 	e.POST("/users/reg", h.Reg)
-
 
 	e.GET("/users", h.GetUsers)
 	e.GET("/users/:id", h.GetUser)

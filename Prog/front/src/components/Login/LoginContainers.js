@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import Login from "./Login";
 import {compose} from "redux";
-import {SignIn, SignUp} from "../../redux/authReducer";
+import {SignIn} from "../../redux/authReducer";
 
 class LoginAPI extends React.Component {
   componentDidMount() {
@@ -23,7 +23,7 @@ let mapStateToProps = (state) => {
 };
 
 let LoginContainer = compose(
-  connect(mapStateToProps, {SignIn, SignUp})
+  connect(mapStateToProps, {SignIn})
 )(LoginAPI);
 
 export default LoginContainer;
