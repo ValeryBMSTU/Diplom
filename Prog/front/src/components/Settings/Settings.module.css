@@ -1,0 +1,5 @@
+.imgProfile img {
+    object-fit: cover;
+    width: 1000px;
+    height: 200px;
+}

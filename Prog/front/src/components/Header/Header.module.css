@@ -1,0 +1,30 @@
+.header {
+    grid-area: h;
+    background-color: #b4ff58;
+}
+.header img {
+    width: 50px;
+}
+
+.loginBlock {
+    float: right;
+}
+
+.signUp {
+    position: absolute;
+    right: 80px;
+    top: 25px;
+}
+
+.signIn {
+    position: absolute;
+    right: 10px;
+    top: 25px;
+}
+
+.authorizedBlock {
+    float: right;
+    position: absolute;
+    right: 80px;
+    top: 25px;
+}

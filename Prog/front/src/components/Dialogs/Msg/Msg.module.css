@@ -1,0 +1,9 @@
+.msg .active {
+    color: gold;
+}
+
+.msg img {
+    width: 25px;
+    height: 25px;
+    border-radius: 20px;
+}
